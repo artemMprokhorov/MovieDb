@@ -1,6 +1,6 @@
 package com.example.moviedb.catalog.domain.model
 
-open class DomainPopular(
+data class DomainPopular(
     val page: Long,
     val totalResults: Long,
     val totalPages: Long,

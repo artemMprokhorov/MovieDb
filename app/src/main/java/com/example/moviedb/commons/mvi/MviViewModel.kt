@@ -7,5 +7,4 @@ interface MviViewModel<TIntent, TUiState> {
     fun processUserIntents(userIntents: Observable<TIntent>)
 
     fun uiStates(): Observable<TUiState>
-
 }

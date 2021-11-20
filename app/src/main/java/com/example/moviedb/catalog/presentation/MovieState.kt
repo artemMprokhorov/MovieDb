@@ -3,7 +3,6 @@ package com.example.moviedb.catalog.presentation
 import com.example.moviedb.catalog.presentation.model.UiMovieItem
 import com.example.moviedb.catalog.presentation.model.UiPopular
 
-
 sealed class MovieState(
     val isLoading: Boolean = false
 ) {

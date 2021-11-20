@@ -6,6 +6,5 @@ interface MviUi<TIntent, in TUiState> {
 
     fun userIntents(): Observable<TIntent>
 
-    fun renderUiStates(uiState: TUiState)
-
+    fun renderStates(uiState: TUiState)
 }

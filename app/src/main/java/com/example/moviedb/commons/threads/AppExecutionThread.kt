@@ -10,5 +10,4 @@ class AppExecutionThread @Inject constructor() : ExecutionThread {
     override fun schedulerForObserving(): Scheduler = AndroidSchedulers.mainThread()
 
     override fun schedulerForSubscribing(): Scheduler = Schedulers.io()
-
 }

@@ -13,7 +13,6 @@ import com.example.moviedb.commons.extentions.setImageFromUrl
 import com.example.moviedb.databinding.ViewMovieItemBinding
 import javax.inject.Inject
 
-
 class MovieAdapter @Inject constructor() :
     RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 

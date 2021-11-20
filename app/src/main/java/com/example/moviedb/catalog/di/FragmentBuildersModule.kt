@@ -1,4 +1,4 @@
-package com.vladus177.albums.di
+package com.example.moviedb.catalog.di
 
 import com.example.moviedb.catalog.ui.fragment.MovieCatalogFragment
 import dagger.Module

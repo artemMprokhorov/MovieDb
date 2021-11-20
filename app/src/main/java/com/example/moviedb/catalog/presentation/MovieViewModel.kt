@@ -16,7 +16,6 @@ import io.reactivex.rxkotlin.plusAssign
 import io.reactivex.subjects.PublishSubject
 import javax.inject.Inject
 
-
 class MovieViewModel @Inject constructor(
     private val movieProcessor: MovieProcessor,
     private val uiMovieStateMapper: UiMovieStateMapper,

@@ -134,11 +134,11 @@ class MovieCatalogFragment : DaggerFragment(), MviUi<MovieUserIntent, MovieState
 
     private fun observeUiStates() {
         viewModel.liveData().observe(this, { uiState ->
-            uiState?.let { renderUiStates(it) }
+            uiState?.let { renderStates(it) }
         })
     }
 
-    override fun renderUiStates(uiState: MovieState) {
+    override fun renderStates(uiState: MovieState) {
         when (uiState) {
             MovieState.DefaultState -> setDefaultState()
             MovieState.LoadingState -> setScreenForLoading(uiState.isLoading)
@@ -154,7 +154,7 @@ class MovieCatalogFragment : DaggerFragment(), MviUi<MovieUserIntent, MovieState
         }
     }
 
-    fun setDefaultState() {
+    private fun setDefaultState() {
         setScreenForLoading(true)
         setScreenForContent(false)
     }
@@ -166,7 +166,7 @@ class MovieCatalogFragment : DaggerFragment(), MviUi<MovieUserIntent, MovieState
         }
     }
 
-    fun setScreenForContent(isLoaded: Boolean) {
+    private fun setScreenForContent(isLoaded: Boolean) {
         when (isLoaded) {
             true -> binding.contentLayout.isVisible = isLoaded
             else -> binding.contentLayout.isGone = !isLoaded
@@ -179,7 +179,7 @@ class MovieCatalogFragment : DaggerFragment(), MviUi<MovieUserIntent, MovieState
         setIncomingData(popular.results)
     }
 
-    fun setScreenForError(show: Boolean) {
+    private fun setScreenForError(show: Boolean) {
         when (show) {
             true -> {
                 setScreenForLoading(false)
@@ -201,15 +201,15 @@ class MovieCatalogFragment : DaggerFragment(), MviUi<MovieUserIntent, MovieState
         }
     }
 
-    fun setErrorDismissListener() {
+    private fun setErrorDismissListener() {
         binding.itemClickListener = OnClickListener { setScreenForError(false) }
     }
 
-    fun onItemClicked(uiPopularItem: UiPopularItem) {
+    private fun onItemClicked(uiPopularItem: UiPopularItem) {
         executeLoad(uiPopularItem.id)
     }
 
-    fun onItemLoaded(uiMovieItem: UiMovieItem) {
+    private fun onItemLoaded(uiMovieItem: UiMovieItem) {
         movieItemDialogFragment.liveDataUiState.value = uiMovieItem
         movieItemDialogFragment.show(parentFragmentManager)
     }
@@ -220,7 +220,8 @@ class MovieCatalogFragment : DaggerFragment(), MviUi<MovieUserIntent, MovieState
                 super.onScrollStateChanged(recyclerView, newState)
                 if (!recyclerView.canScrollVertically(DIRECTION)) {
                     context?.let { showToast(it) }
-                    executeInit((currentPageNum + PAGE_INIT_VALUE).toString())
+                    currentPageNum += PAGE_INIT_VALUE
+                    executeInit((currentPageNum).toString())
                 }
             }
         })

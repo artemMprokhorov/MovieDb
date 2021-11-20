@@ -37,7 +37,7 @@ abstract class RemoteModule {
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .socketFactory(SocketFactory.getDefault())
 
-            if (BuildConfig.FLAVOR.equals("dummy")) {
+            if (BuildConfig.FLAVOR == "dummy") {
                 okHttpBuilder.addInterceptor(FakeInterceptor(context))
             }
 

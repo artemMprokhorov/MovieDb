@@ -7,5 +7,4 @@ interface ExecutionThread {
     fun schedulerForObserving(): Scheduler
 
     fun schedulerForSubscribing(): Scheduler
-
 }
